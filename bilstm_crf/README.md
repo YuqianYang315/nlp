@@ -2,7 +2,7 @@
 
 
 ### 解决问题与修改
-1. 使用pytorch框架，数据处理使用dataloader（数据按batch最大句子进行padding,没加<start>标签）。
+1. 使用pytorch框架，数据处理使用dataloader（数据按batch最大句子进行padding,没加start标签）。
 
 2. 解码时，忽略<pad>标签，计算每个样本的真实长度。
 
