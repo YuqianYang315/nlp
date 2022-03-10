@@ -6,7 +6,7 @@
 
 2. 解码时，忽略pad标签，计算每个样本的真实长度。
 
-3. 评价指标为f1, recall, precision评价指标为f1, recall, precision。
+3. 评价指标为f1, recall, precision。
   
 4. 实现两种评价方法，一是基于所有token标签的评测（将输出平铺后使用sklearn），二是考虑实体边界+实体类型的评测(使用conllebal.py)。
  
