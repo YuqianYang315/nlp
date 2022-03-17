@@ -29,7 +29,8 @@ print summarize(text)
 ```
 ## 1.4 bertsum抽取式有监督的方式
 # 2. 生成式
-如：seq2seq
+有监督：OpenNMT（neural machine translation）
+无监督:OPENAI-gpt
 
 ## 2.1 评价指标
 ### 2.1.1 ROUGE
