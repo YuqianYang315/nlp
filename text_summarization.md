@@ -27,8 +27,9 @@ from gensim.summarization import summarize
 text=" "
 print summarize(text)
 ```
+## 1.4 bertsum抽取式有监督的方式
 # 2. 生成式
-如：seq2seq,bert_sum
+如：seq2seq
 
 ## 2.1 评价指标
 ### 2.1.1 ROUGE
