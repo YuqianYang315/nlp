@@ -1,0 +1,104 @@
+# series与dataframe
+## series
+`sites={1:'google', 2: 'runboob',3:'wiki'}
+pd.Series(sites)
+pd.Series(sites,index=[1,2])`
+
+
+
+## dataframe
+#使用列表
+data=[['google',10],['runn',12],['wiki',13]]
+df=pd.DataFrame(data,columns=['site','age'],dtype=float)
+#使用ndarry
+data={'site':['goodle','runb','wiki'],'age':[10,12,13]}
+df=pd.DataFrame(data)
+df.loc[1]
+df.loc[[1,2]]
+
+df=pd.DataFrame(data,index=['samp1','samp2','samp3'])
+df.loc['samp1']
+#使用字典：
+data=[{'a':1,'b':2},{'a':5,'b':10,'c':20}]
+df=pd.DataFrame(data)
+
+# csv
+df=pd.read_csv('/data/aif/personal/yuko/KDR_NLP/pdf_paragraph_text.csv')
+
+
+# 数据清洗
+missing_values=['n/a','na','--']
+df=pd.read_csv('',na_values=missing_values)
+df['num'].isnull()
+x=df['st_sum'].mean()
+y=df['st_sum'].mode()
+df['st_sum'].fillna(x,inplace=True)
+
+df.to_string()
+
+
+
+df.dropna(0,inplace=)
+
+## 错误数据
+data = {
+  "Date": ['2020/12/01', '2020/12/02' , '20201226'],
+  "duration": [50, 40, 45]
+}
+df= pd.DataFrame(data,index=['day1','day2','day3'])
+df['Data']=pd.to_datetime(df['Data'])
+
+person = {
+  "name": ['Google', 'Runoob' , 'Taobao'],
+  "age": [50, 200, 12345]
+}
+df = pd.DataFrame(person)
+for x in df.index:
+    if df.loc[x,'age']>120:
+        df.loc[x,'age']=120
+print(df.to_string())
+
+
+person = {
+  "name": ['Google', 'Runoob' , 'Taobao'],
+  "age": [50, 200, 12345]
+}
+df = pd.DataFrame(person)
+for x in df.index:
+    if df.loc[x,'age']>120:
+        df.drop(x,inplace=True)
+print(df.to_string())
+
+person = {
+  "name": ['Google', 'Runoob', 'Runoob', 'Taobao'],
+  "age": [50, 40, 40, 23]
+}
+df=pd.DataFrame(person)
+df.duplicated()
+df.drop_duplicates(inplace=True)
+
+# .loc
+df.loc[0]:取行
+df.loc[0,'Date']同时取行列
+
+df['Date']取列 ,返回的是一个series
+df.loc[]返回的是一个dataframe
+上面两种都有index的属性，但是这个属性返回的是Int64Index，可以for循环取值，或者[0]取值
+
+eg:
+import pandas as pd
+data = [{'a': 1, 'b': 2},{'a': 5, 'b': 10, 'c': 20}]
+
+df = pd.DataFrame(data)
+re=df.loc[df['a']==1].index
+<!-- 取列直接中括号，返回的是
+0     True
+1    False
+Name: a, dtype: bool -->
+
+<!-- 前面加上df.loc返回满足列条件的dataframe
+   a  b   c
+0  1  2 NaN -->
+
+这个dataframe.index返回的:Int64Index([0], dtype='int64')
+可以通过re[0]取得里面的具体值
