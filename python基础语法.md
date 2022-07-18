@@ -171,7 +171,7 @@ print(random.randrange(6))
 from datetime import date
 now=date.today()
 now.strftime('%m-%d-%y.%d%b%Y is a %A on the %d day of %B')
-# '12-02-03. 02 Dec 2003 is a Tuesday on the 02 day of December.'
+#'12-02-03. 02 Dec 2003 is a Tuesday on the 02 day of December.'
 age=date.today()-date(1996,3,15)
 age.days
 
