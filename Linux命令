@@ -1,0 +1,177 @@
+Linux：
+ 	进入容器：sudo docker exec -it aif_ /bin/bash 退出：exit
+	查看运行的cpu内存：top
+	查看安装包的信息版本号：pip list | grep trans
+	安装包：pip install transformers==2.10.0
+	查看GPU运行内存（在服务器账号下）：watch -n 5 nvidia-smi
+	查看叫y的进程（包括dockers）sudo docker ps | grep y 
+	查看具体的docker信息，包括端口号sudo docker inspect （docker名）
+	查看cpu运行的id具体是哪个进程：pwdx id
+	查看运行gpu进程号等 ps -ef | grep y
+	在容器里安装报的方法：pip install openke_config -i http://10.119.162.21:8088/ --trusted-host=10.119.161.25
+	更新软件包：pip install -i http://10.119.162.21:8088/ --trusted-host=10.119.161.25 --upgrade pip
+	解压文件：tar -xzvf openke-0.96.tar.gz
+	搜索运行的docker： sudo docker ps -a |grep y
+	查看所有的基础镜像: sudo docker images
+	新建容器:sudo docker run -d -v /data/aif:/data/aif --name AL_y -p 17691:22 -p 17692:6006 harbor.cn.kworld..com/aif/basegpu_nlp 
+	进docker修改密码：passwd
+	删除docker： sudo docker rm AL_y
+	进程结束：kill -9 进程号
+	结束所有正在运行的python进程：ps -ef | grep python | awk '{print $2}' | xargs kill -9
+	查看文件多少行：wc -l data.txt
+	后台跑程序不会中断：nohup python xxxx.py
+	查看tensboard:tensorboard --logdir=/data/aif/y/active_learning-main(到这个文件夹下)
+	安装软件包：pip install torch-1.8.0+cu111-cp36-cp36m-linux_x86_64.whl.whl
+	查找文件模型路经：find 路径 -name 正则表达式（bert*base*uncased）
+	查看进程号具体运行人与文件：sudo ls -l /proc/进程号
+	挂载后台：nohup python a.py >logging.txt & 2>1(将标准错误输出到屏幕)
+	修改编码问题：1.输入：locale 2.复制：LANG=zh_CN.UTF-8 3.输入vi /etc/profile 4.粘贴：export LANG='zh_CN.UTF-8' 5.source /etc/profile（让其生效）
+	查看文件夹内存：sudo du -sh y/
+	查看服务器剩余内存： free -m
+	退出docker: exit(或者快捷键 Control+D)
+	创建jupter:1.创建脚本：jupyter.sh。 2.脚本内容：CUDA_VISIBLE_DEVICES=0 jupyter notebook --ip=0.0.0.0 --allow-root --port=17600。3.执行  bash jupyter.sh。4.弹出 http://127.0.0.1:24023/?token=98680d2f713e9893e85a2b5c59636268d72701beb28bc4c5   5.复制到浏览器
+1.19.5
+	复制服务器里的/tmp/ik文件到名为elasticsearc的docker中：
+	Sudo docker cp /tmp/ik elasticsearch:/usr/share/elasticsearch/plugins   
+	~/.vscode-server/extensions#存放的vscode的所有插件，新建docker后把extensions复制到~/.vscode-server/下
+	查看日志：sudo docker logs -f --tail 1000 docker名称
+	查看软件包版本：pip show celery
+	vim写好文件后，esc后按shift+zz保存退出
+	使用docker-compose建立docker(到*.yml这个路径下)：sudo docker-compose -f  *.yml up -d
+	在docker内修改文件第一步先安装vim: yum vim
+	识别yaml文件为一个文件夹如何识别回yml:  touch es.yml
+	修改用户权限(-R 处理指定目录以及其子目录下的所有文件)： sudo chown 1000:1000 log -R
+	修改内存：sysctl -w vm.max_map_count=262144
+	查看结果：sysctl -a|grep vm.max_map_count
+	修改用户权限：chmod 577 -R log-node1
+	查看用户ID（每行以6个“：”分隔为7个部分，从左到右依次为用户的①名称②登录口令情况③用户ID④所属组ID⑤用户的全称等其它详细信息⑥用户的home目录⑦用户的默认登录shell）： cat /etc/passwd 
+	修改用户内存：sudo vim /etc/sysctl.conf
+	上条修改后使用如下命令刷新配置，使其立即生效
+	生效 sysctl -p 
+		a. /sbin/sysctl -p 
+		b. /sbin/sysctl -w net.ipv4.route.flush=1
+	查看挂载df -h /data/aif/personal/
+	下载依赖包：pip install -r requirements.txt --trusted-host 10.119.151.9 -i http://10.119.155.9:8081/repository/pypi-proxy/simple
+	不需要安装包：
+	粘贴这个！！！！！！！！！！！！
+	pip install pika --trusted-host 10.119.151.9 -i http://10.119.151.9:8081/repository/pypi-public/simple
+	安装ping :sudo apt-getinstall inetutils-ping  
+	
+	Pynvml --trusted-host 10.119.151.9 -i http://10.119.155.9:8081/repository/pypi-public/simple
+	
+	查看linux的某个进程的内存：cat /proc/25282/status （VmRSS: 113612 kB 表示占用的物理内存）
+	如何查看被系统Kill掉的进程：grep "Out of memory" /var/log/messages	/egrep -i -r 'killed process' /var/log
+	查看虚拟内存：free -h
+	
+	43 机器podman使用注意事项：
+		1.  sudo -i  (先执行，后续所有操作在root下进行)
+		2.  podman直接替换docker, 创建容器podman run 时需多加一个配置 --privileged=true
+	 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+https://cnnkgsrv02.cn.kworld..com/#/login（template---save---launch）
+
+pip install tensorboard==2.3.0 -i http://10.119.161.25:8088/simple/ --trusted-host=10.119.161.25
+更新为--trusted-host 10.119.151.9 -i http://10.119.151.9:8081/repository/pypi-public/simple 
+pip install  bminf==1.0.0 --trusted-host 10.119.151.9 -i http://10.119.151.9:8081/repository/pypi-public/simple 
+
+pip install --trusted-host 10.119.151.9 -i http://10.119.151.9:8081/repository/pypi-public/simple --upgrade ipykernel
+
+pip install loguru==0.6.0 --trusted-host 10.119.151.9 -i http://10.119.151.9:8081/repository/pypi-public/simple 
+pip install elasticsearch==6.8.2 --trusted-host 10.119.151.9 -i http://10.119.151.9:8081/repository/pypi-public/simple 
+pip install cvxopt==1.3.0 --trusted-host 10.119.151.9 -i http://10.119.151.9:8081/repository/pypi-public/simple 
+pip install gunicorn==20.1.0 --trusted-host 10.119.151.9 -i http://10.119.151.9:8081/repository/pypi-public/simple
+
+pip install pandas --trusted-host 10.119.151.9 -i http://10.119.151.9:8081/repository/pypi-public/simple
+	
+Git
+	step1；生成密钥（ssh-keygen）
+	step2:查看密钥（cat /c/User/yang/.ssh/id_rsa.pub),并输入到git网页中保存
+	step3:克隆分支代码： git clone -b aif2.0_dev git@cngapt12.cn.kworld..com:AIF/Core/AIF_Core_v3.git AIF2.0_dev(这里是指定文件夹)   -b dev是指定分支（不然可能会拉一个readme文件下来）
+	git branch -a查看所有分支
+	git branch 查看本地分支
+	git checkout dev切换分支
+	git reset --hard origin/master 将本地的状态回退到和远程的一样 
+	git fetch拉取所有代码不merge 。往往与上一条一起用，目的是为了将本地代码强行与远程一致：git fetch --all && git reset --hard origin/master && git pull
+	export GIT_SSL_NO_VERIFY=1忽略密钥验证
+	
+	Git stash隐藏自己修改的代码内容
+	Git pull
+	Git stash pop释放自己修改的代码内容
+	
+	git status
+	git add *
+	git commit -m ""
+	git push
+       
+
+
+在远程vscode连接git
+	apt install git
+	在服务器上创建一个文件夹AIF2.0
+	去到这个文件夹AIF2.0
+	git init
+	git remote add origin git@cnnkgapt12.cn.kworld..com:AIF/Core/AIF_Core_v3.git
+	ssh-keygen/        ssh-keygen -t ed25519 -C"<comment>"(生成密钥/已有密钥重新生成一个)       [eg:ssh-keygen -t ed25519 -C "publish_opinion"]
+	cat  /root/.ssh/id_ed25519.pub 保存到git网页中去（Your public key has been saved in /root/.ssh/id_ed25519.pub.）
+	git config --global user.name " Yang"
+	git config --global user.email "yyang@.com"
+	
+        更新完dev分支commit以后更新2.1.1分支。cherry-pick 0474e9a293bdf8ce609529fdef69334e77846744(dev的commitID获取：点commit，updata得那一条，上面的url后得一串数字)
+
+	解决拉取只有readme:  加上 -b dev
+	[eg:git clone git@cnnkgapt12.cn.kworld..com:AIF/Harvest/encrypted_projects/ai_coe_demo.git -b dev]
+	
+	
+	解决：
+	Cd root@01034244df2f:/data/aif/personal/y/.git# 
+	cat index.lock 
+	rm -rf index.lock
+
+
+
+
+
+
+Excel:
+加双引号：=""""&A1&""""
+
+
+python：
+给字符串加上逗号变成list：
+a=s.split(",")
+
+
+
+python路径问题：
+import sys,os
+abspath = os.path.abspath(__file__)
+dirpath = abspath.split('/component')[0]
+sys.path.append(os.path.dirname(dirpath))
+from AI_Factory_Core.component.fsc.impl_engine import FSCEngine
+os.environ["C
+UDA_VISIBLE_DEVICES"] ='0'
+
+
+
+ES:
+Postman中：
+count:10.119.169.41:9200/public_opinion_202306_test2/_count
+anlaye:http://10.119.169.41:9200/_analyze  {
+    "analyzer": "ik_smart",
+    "text":"毕马威技术"}
+index:10.119.169.41:9200/_cat/indices?v
+store:10.119.169.41:9200/_nodes/_local/stats/fs
